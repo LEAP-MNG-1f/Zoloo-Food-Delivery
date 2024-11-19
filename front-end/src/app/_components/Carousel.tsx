@@ -1,7 +1,7 @@
 export const Carousel = () => {
   return (
     <div className="w-full h-[788px] bg-[#18BA51] text-[#FFFFFF] bg-[url('/BackgroundShapes.png')] flex justify-center gap-[10%] items-center">
-      <div className="flex flex-col items-center justify-center border border-black w-[384px] h-[225px] gap-[23px]">
+      <div className="flex flex-col items-center justify-center w-[384px] h-[225px] gap-[23px]">
         <div className="">
           <h1 className="text-[55px] font-semibold leading-[49px] w-13 text-white">
             Pinecone Food Delivery
