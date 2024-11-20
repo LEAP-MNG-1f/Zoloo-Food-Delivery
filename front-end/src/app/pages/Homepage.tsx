@@ -10,7 +10,7 @@ import { Header } from "../_components/Header";
 
 export const HomePage = () => {
   return (
-    <div className="w-full ">
+    <div className="w-full flex flex-col items-center justify-center ">
       <Header />
       <Carousel />
     </div>

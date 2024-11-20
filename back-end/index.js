@@ -4,6 +4,7 @@ import { v2 as cloudinary } from "cloudinary";
 import dotenv from "dotenv";
 
 dotenv.config();
+
 const server = express();
 const PORT = 8000;
 
