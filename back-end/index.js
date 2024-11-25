@@ -1,15 +1,42 @@
 import express from "express";
 import cors from "cors";
-import { v2 as cloudinary } from "cloudinary";
-import dotenv from "dotenv";
-import connectDb from "./connectDb.js";
+import mongoose from "mongoose";
+import animeModel from "./model/anime.js";
+import userRouter from "./routes/userRoute.js";
+import foodRouter from "./routes/foodRouter.js";
 
-dotenv.config();
+mongoose.connect(
+  "mongodb+srv://ace12d192:wap3TZLOZeJlgLIq@cluster0.s6jvj.mongodb.net/food-delivery"
+);
 
 const server = express();
-const PORT = 8000;
+const PORT = 4000;
 
 server.use(cors());
+server.use("/api", userRouter);
+server.use("/api", foodRouter);
+
+// server.post("/create", async (request, response) => {
+//   const result = await animeModel.create({
+//     name: "Naruto",
+//     year: 199,
+//   });
+//   response.json({
+//     success: true,
+//     data: result,
+//   });
+// });
+
+// server.delete("/delete", async (request, response) => {
+//   const result = await animeModel.deleteOne({
+//     _id: "6743f24544d0180e814a71b6",
+//   });
+//   response.json({
+//     success: true,
+//     data: result,
+//   });
+// });
+
 // server.post("/", async (request, response) => {
 //   const db = await connectDb();
 //   let collection = db.collection("movies");
@@ -41,62 +68,65 @@ server.use(cors());
 //   }
 // });
 
-server.get("/", async (request, response) => {
-  const database = await connectDb();
-  // console.log(database);
+// server.get("/", async (request, response) => {
+//   const database = await connectDb();
 
-  // const moviesCollection = database.collection("movies");
-  // const ourInsertedDocuments = moviesCollection.find({
-  //   genres: ["Zoloo", "Tuuguu"],
-  // });
-  // await ourInsertedDocuments.next();
-  // const result = await ourInsertedDocuments.next();
-  // response.status(200).json({
-  //   result: result,
-  // });
-});
-server.post("/create-product", async (req, response) => {
-  const database = await connectDb();
-  const collection = database.collection("product");
-  const result = await collection.insertOne({
-    name: "Jordan 11",
-    owner: "Zoloo",
-    price: "100000",
-  });
-  response.json({
-    succes: true,
-    data: result,
-  });
-});
+// console.log(database);
 
-server.put("/update", async (req, response) => {
-  const database = await connectDb();
-  const collection = database.collection("product");
-  const result = await collection.findOneAndUpdate(
-    { owner: "Zoloo" },
-    {
-      $set: {
-        name: "Jordan 11",
-        price: "8800",
-        date: new Date(),
-      },
-    }
-  );
-  response.json({
-    succes: true,
-    data: result,
-  });
-});
+// const moviesCollection = database.collection("movies");
+// const ourInsertedDocuments = moviesCollection.find({
+//   genres: ["Zoloo", "Tuuguu"],
+// });
+// await ourInsertedDocuments.next();
+// const result = await ourInsertedDocuments.next();
+// response.status(200).json({
+//   result: result,
+// });
 
-server.delete("/", async (req, response) => {
-  const database = await connectDb();
-  const collection = database.collection("product");
-  const result = await collection.findOneAndDelete({ owner: "Zoloo" });
-  response.json({
-    succes: true,
-    data: result,
-  });
-});
+// });
+
+// server.post("/create-product", async (req, response) => {
+//   const database = await connectDb();
+//   const collection = database.collection("product");
+//   const result = await collection.insertOne({
+//     name: "Jordan 11",
+//     owner: "Zoloo",
+//     price: "100000",
+//   });
+//   response.json({
+//     succes: true,
+//     data: result,
+//   });
+// });
+
+// server.put("/update", async (req, response) => {
+//   const database = await connectDb();
+//   const collection = database.collection("product");
+//   const result = await collection.findOneAndUpdate(
+//     { owner: "Zoloo" },
+//     {
+//       $set: {
+//         name: "Jordan 11",
+//         price: "8800",
+//         date: new Date(),
+//       },
+//     }
+//   );
+//   response.json({
+//     succes: true,
+//     data: result,
+//   });
+// });
+
+// server.delete("/", async (req, response) => {
+//   const database = await connectDb();
+//   const collection = database.collection("product");
+//   const result = await collection.findOneAndDelete({ owner: "Zoloo" });
+//   response.json({
+//     succes: true,
+//     data: result,
+//   });
+// });
 
 server.listen(PORT, () => {
   console.log(`http://localhost:${PORT} ajillaj ehellee`);
