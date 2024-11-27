@@ -4,9 +4,10 @@ import mongoose from "mongoose";
 import animeModel from "./model/anime.js";
 import userRouter from "./routes/userRoute.js";
 import foodRouter from "./routes/foodRouter.js";
+import orderRouter from "./routes/orderRouter.js";
 
 mongoose.connect(
-  "mongodb+srv://ace12d192:wap3TZLOZeJlgLIq@cluster0.s6jvj.mongodb.net/food-delivery"
+  "mongodb+srv://Zolooboston:greathun@leap-zoloo.3aknh.mongodb.net/food-delivery"
 );
 
 const server = express();
@@ -15,6 +16,7 @@ const PORT = 4000;
 server.use(cors());
 server.use("/api", userRouter);
 server.use("/api", foodRouter);
+server.use("/api", orderRouter);
 
 // server.post("/create", async (request, response) => {
 //   const result = await animeModel.create({
