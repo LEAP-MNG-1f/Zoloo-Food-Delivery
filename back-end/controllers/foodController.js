@@ -1,5 +1,5 @@
 import { request, response } from "express";
-import { Food } from "../model/food.js";
+import { Food } from "../model/food.model.js";
 
 const createFood = async (request, response) => {
   const result = await Food.create({

@@ -17,6 +17,11 @@ const foodSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  category: {
+    type: mongoose.SchemaTypes.ObjectId,
+    ref: Category,
+    required: true,
+  },
 });
 
 export const Food = mongoose.model("Food", foodSchema);

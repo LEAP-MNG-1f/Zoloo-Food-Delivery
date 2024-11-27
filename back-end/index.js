@@ -12,11 +12,12 @@ mongoose.connect(
 
 const server = express();
 const PORT = 4000;
+const MAIN_PATH = "/api";
 
 server.use(cors());
-server.use("/api", userRouter);
-server.use("/api", foodRouter);
-server.use("/api", orderRouter);
+server.use(MAIN_PATH, userRouter);
+server.use(MAIN_PATH, foodRouter);
+server.use(MAIN_PATH, orderRouter);
 
 // server.post("/create", async (request, response) => {
 //   const result = await animeModel.create({
