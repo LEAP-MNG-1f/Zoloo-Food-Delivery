@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { Food } from "./food.model";
+// import { Food } from "./food.model";
 
 const processEnum = {
   values: ["Progress", "Delivered", "Waiting", "Active"],
@@ -14,17 +14,17 @@ const orderSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  foodIds: [
-    {
-      type: mongoose.SchemaTypes.ObjectId,
-      ref: "Food",
-      required: true,
-    },
-  ],
   totalPrice: {
     type: String,
     required: true,
   },
+  // foodIds: [
+  //   {
+  //     type: mongoose.SchemaTypes.ObjectId,
+  //     ref: "Food",
+  //     required: true,
+  //   },
+  // ],
   process: {
     type: String,
     enum: processEnum,

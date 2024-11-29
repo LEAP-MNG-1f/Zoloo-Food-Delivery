@@ -2,9 +2,10 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import animeModel from "./model/anime.js";
-import userRouter from "./routes/userRoute.js";
-import foodRouter from "./routes/foodRouter.js";
-import orderRouter from "./routes/orderRouter.js";
+import userRouter from "./routes/user.route.js";
+import orderRouter from "./routes/order.route.js";
+import foodRouter from "./routes/food.route.js";
+import categoryRouter from "./routes/category.route.js";
 
 mongoose.connect(
   "mongodb+srv://Zolooboston:greathun@leap-zoloo.3aknh.mongodb.net/food-delivery"
@@ -16,8 +17,9 @@ const MAIN_PATH = "/api";
 
 server.use(cors());
 server.use(MAIN_PATH, userRouter);
-server.use(MAIN_PATH, foodRouter);
 server.use(MAIN_PATH, orderRouter);
+server.use(MAIN_PATH, foodRouter);
+server.use(MAIN_PATH, categoryRouter);
 
 // server.post("/create", async (request, response) => {
 //   const result = await animeModel.create({
